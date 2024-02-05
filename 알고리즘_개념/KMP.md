@@ -7,21 +7,11 @@
 
 ### 1. 접두사(prefix)와 접미사(suffix)
 
-- 접두사
-    - b
-    - ba
-    - ban
-    - bana
-    - banan
-    - banana
+- pi 배열은 접두사와 접미사가 몇개나 일치하는지를 배열에 저장해놓은 것이다.
 
-- 접미사
-    - a
-    - na
-    - ana
-    - nana
-    - anana
-    - banana
+- 접두사: j, ja, jav, java
+- 접미사: a, va, ava, java
+
 
 ### 2. Pi배열
 -kmp의 원리를 Pi배열을 얻을 때도 사용하면 Pi 배열 생성 시간을 O(m)으로 비약적으로 단축 가능
@@ -29,4 +19,26 @@
 - i는 현재 어디까지 일치하는지 표시하는 포인터
 - j는 탐색 위치를 표시하는 포인터 역할
 
+- 파이배열 이라는 것은 맨 앞과 맨 뒤의 숫자가 몇개씩 일치하는지 찾아서 배열로 저장하는 것이다.
 
+``` java
+String str = "abcabcd";
+int[] pi = new int[str.length()];
+
+// a -> pi[0] 는 무조건 0
+// ab -> pi[1] = 0
+// abc -> pi[2] = 0
+// abc -> pi[3] = 0
+// abca -> pi[4] = 1
+// abcab -> pi[5] = 2
+// abcabc -> pi[6] = 3
+// abcabcd -> pi[7] = 0
+
+// pi = {0, 0, 0, 1, 2, 3, 0};
+```
+
+### 3. KMP 알고리즘
+
+- Text를 0부터 n까지 진행하면서
+- Pattern과 같으면 Text와 Pattern을 한칸씩 진행
+- Pattern과 다르면 이전 Pattern의 파이배열의 값으로 돌아가서 Text와 Pattern을 매칭
