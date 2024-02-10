@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class bj_17144 {
+public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
@@ -11,13 +11,13 @@ public class bj_17144 {
         int r = Integer.parseInt(st.nextToken()); // row
         int c = Integer.parseInt(st.nextToken()); // col
         int T = Integer.parseInt(st.nextToken()); // T초 후 방의 미세먼지
-        
+
         int[] dx = {1, 0, -1, 0};
         int[] dy = {0, 1, 0, -1};
-        
+
         int[][] arr = new int[r][c]; // 미세먼지 지도
         int[] airCleaner = new int[2];
-        
+
         for (int i = 0; i < r; i++) { // 방에 미세먼지 arr에 입력
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < c; j++) {
