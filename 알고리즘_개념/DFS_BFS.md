@@ -5,7 +5,7 @@ import java.io.*;
 public class Main {
     static boolean[] visited; // 방문 여부
     static boolean[][] arr; // 간선 그래프
-    static List<Integer> ans; // DFS 방문 순서를 저장할 리스트
+    static List<Integer> ans_dfs; // DFS 방문 순서를 저장할 리스트
     static List<Integer> ans_bfs; // BFS 방문 순서를 저장할 리스트
 
     static Queue<Integer> queue; // queue 구현
@@ -19,7 +19,7 @@ public class Main {
 
         visited = new boolean[n + 1]; // 방문 여부
         arr = new boolean[n + 1][n + 1]; // 간선 그래프
-        ans = new ArrayList<>(n); // DFS 정답을 넣는 List
+        ans_dfs = new ArrayList<>(n); // DFS 정답을 넣는 List
 
         for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
@@ -37,7 +37,7 @@ public class Main {
         visited = new boolean[n + 1]; // 방문 여부 갱신
         dfs(v);
 
-        for (int node : ans) {
+        for (int node : ans_dfs) {
             System.out.print(node + " ");
         }
         System.out.println();
@@ -48,7 +48,7 @@ public class Main {
     }
     public static void dfs(int num) {
         visited[num] = true;
-        ans.add(num);
+        ans_dfs.add(num);
 
         for (int i = 1; i < arr[num].length; i++) {
             if (arr[num][i] && !visited[i]) {
